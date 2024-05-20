@@ -1,0 +1,31 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+	
+	<h1>{{title}}</h1>
+	<div>{{description}}</div>
+
+
+	<ul class="nav nav-pills">
+		<li class="nav-item">
+			<a href="/dogs/{{id}}?show=image" class="nav-link">
+				Картинка
+			</a>
+		</li>
+		<li>
+			<a href="/dogs/{{id}}?show=info" class="nav-link">
+				Описание
+			</a>
+		</li>
+	</ul>
+
+	<div class="border" style="padding: 20px; margin-top: 20px">
+		{% block objectContent %}
+			<img src="{{ image }}" style="width: 300px;"/>
+			<div>
+				{{ info }}
+			</div>
+		{% endblock %}
+	</div>
+
+{% endblock %}

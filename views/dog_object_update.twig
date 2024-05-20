@@ -1,0 +1,48 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+	<h1>Изменение песика</h1>
+	<hr>
+
+	{% if message %}
+		<div class="alert alert-info">
+			{{ message }}
+			<a href="/dogs/{{id}}">открыть измененный объект</a>
+		</div>
+	{% endif %}
+
+	{% if error %}
+		<div class="alert alert-danger">
+			{{ error }}
+		</div>
+	{% endif %}
+
+	<form action="" enctype="multipart/form-data" method="POST" class="row g-3">
+		<div class="col-4">
+			<label class="form-label">Название</label>
+			<input type="text" class="form-control" name="title" value="{{ object.title }}">
+		</div>
+		<div class="col-4">
+			<label class="form-label">Краткое описание</label>
+			<input type="text" class="form-control" name="description" value="{{ object.description }}">
+		</div>
+		<div class="col-4">
+			<label class="form-label">Тип</label>
+			<select class="form-control" name="type">
+				<option value="Большие собаки" {% if object.type == "Большие собаки" %} selected {% endif %}>Большие собаки</option>
+				<option value="Маленькие собаки" {% if object.type == "Маленькие собаки" %} selected {% endif %}>Маленькие собаки</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Картинка</label>
+			<input class="form-control" type="file" name="image" value="{{ object.image }}">
+		</div>
+		<div class="col-12">
+			<textarea name="info" placeholder="Полное описание.." class="form-control" rows="5">{{ object.info }}</textarea>
+		</div>
+		<div class="col-12 text-end">
+			<button type="submit" class="btn btn-primary">Изменить</button>
+		</div>
+	</form>
+
+{% endblock %}
